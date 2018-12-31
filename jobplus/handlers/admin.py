@@ -45,9 +45,13 @@ def user_user():
 def admin_jobs():
     page = request.args.get('page', default=1, type=int)
 <<<<<<< HEAD
+<<<<<<< HEAD
     session['job_page'] = page
 =======
 >>>>>>> 添加admin的职位管理功能，修复原有的bug若干。职位编辑仍有一些潜在问题
+=======
+    session['job_page'] = page
+>>>>>>> 添加session，完成issue#73
     pagination = Job.query.paginate(
         page=page,
         per_page=current_app.config['ADMIN_PER_PAGE'],
@@ -126,15 +130,6 @@ def delete_job(id):
     db.session.commit()
     flash('职位 "{}" 删除成功'.format(job.job_title), 'success')
     return redirect(url_for('admin.admin_jobs', page=session.get('job_page')))
-
-
-@admin.route('/job/<int:id>/delete')
-def delete_job(id):
-    job = Job.query.get_or_404(id)
-    db.session.delete(job)
-    db.session.commit()
-    flash('职位 "{}" 删除成功'.format(job.job_title), 'success')
-    return redirect(url_for('admin.admin_jobs'))
 
 
 @admin.route('/users/edituser/<int:id>', methods=["GET", "POST"])
