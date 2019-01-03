@@ -17,26 +17,32 @@ Admin - users
 <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>用户名</th>
-        <th>邮箱</th>
-        <th>手机号</th>
-        <th>状态</th>
+        <th class="text-center">ID</th>
+        <th class="text-center">用户名</th>
+        <th class="text-center">邮箱</th>
+        <th class="text-center">手机号</th>
+        <th class="text-center">状态</th>
+        <th class="text-center">
+            <a href="{{ url_for('admin.add_company') }}" type="button" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                添加企业
+            </a>
+        </th>
     </tr>
     </thead>
     <tbody>
     {% for user in pagination.items %}
     <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phone_number }}</td>
+        <td class="text-center">{{ user.id }}</td>
+        <td class="text-center">{{ user.username }}</td>
+        <td class="text-center">{{ user.email }}</td>
+        <td class="text-center">{{ user.phone_number }}</td>
         {% if user.is_banned %}
-        <td><span class="glyphicon glyphicon-ban-circle" title＝"禁用" aria-hidden="true"></span></td>
+        <td class="text-center"><span class="glyphicon glyphicon-ban-circle" title＝"禁用" aria-hidden="true"></span></td>
         {% else %}
-        <td><span class="glyphicon glyphicon-ok-circle" title＝"启用" aria-hidden="true"></span></td>
+        <td class="text-center"><span class="glyphicon glyphicon-ok-circle" title＝"启用" aria-hidden="true"></span></td>
         {% endif %}
-        <td>
+        <td class="text-center">
             <div class="btn-group" role="group">
                 {% if not user.is_banned %}
                 <a href="{{ url_for('admin.ban_user',id=user.id)}}" type="button" class="btn btn-default" title＝"禁用">

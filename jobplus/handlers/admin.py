@@ -44,14 +44,7 @@ def user_user():
 @admin.route('/jobs')
 def admin_jobs():
     page = request.args.get('page', default=1, type=int)
-<<<<<<< HEAD
-<<<<<<< HEAD
     session['job_page'] = page
-=======
->>>>>>> 添加admin的职位管理功能，修复原有的bug若干。职位编辑仍有一些潜在问题
-=======
-    session['job_page'] = page
->>>>>>> 添加session，完成issue#73
     pagination = Job.query.paginate(
         page=page,
         per_page=current_app.config['ADMIN_PER_PAGE'],
