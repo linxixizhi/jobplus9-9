@@ -7,14 +7,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th class="text-center">ID</th>
-            <th class="text-center">职位名称</th>
-            <th class="text-center">企业名称</th>
-            <th class="text-center">薪酬范围</th>
-            <th class="text-center">学历要求</th>
-            <th class="text-center">状态</th>
-            <th class="text-center"></th>
-            <th class="text-center">
+            <th>ID</th>
+            <th>职位名称</th>
+            <th>企业名称</th>
+            <th>薪酬范围</th>
+            <th>学历要求</th>
+            <th>状态</th>
+            <th></th>
+            <th>
                 <a href="{{ url_for('admin.add_job') }}" type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     添加职业
@@ -25,18 +25,18 @@
     <tbody>
         {% for job in pagination.items %}
         <tr>
-            <td class="text-center">{{ job.id }}</td>
-            <td class="text-center">{{ job.job_title }}</td>
-            <td class="text-center">{{ job.company_msg.name }}</td>
-            <td class="text-center">{{ job.salary_range }}</td>
-            <td class="text-center">{{ job.study_experience }}</td>
-            <td class="text-center">{{ job.is_banned }}</td>
+            <td>{{ job.id }}</td>
+            <td>{{ job.job_title }}</td>
+            <td>{{ job.company_msg.name }}</td>
+            <td>{{ job.salary_range }}</td>
+            <td>{{ job.study_experience }}</td>
+            <td>{{ job.is_banned }}</td>
             {% if job.is_banned %}
-            <td class="text-center"><span class="glyphicon glyphicon-ban-circle" title="禁用" aria-hidden="true"></span></td>
+            <td><span class="glyphicon glyphicon-ban-circle" title="禁用" aria-hidden="true"></span></td>
             {% else %}
-            <td class="text-center"><span class="glyphicon glyphicon-ok-circle" title="启用" aria-hidden="true"></span></td>
+            <td><span class="glyphicon glyphicon-ok-circle" title="启用" aria-hidden="true"></span></td>
             {% endif %}
-            <td class="text-center">
+            <td>
                 <div class="btn-group" role="group">
                     {% if not job.is_banned %}
                     <a href="{{ url_for('admin.ban_job',id=job.id)}}" type="button" class="btn btn-default" title="禁用">
